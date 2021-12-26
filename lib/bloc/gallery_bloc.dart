@@ -31,7 +31,7 @@ class GalleryBloc extends Bloc {
           await http.get(Uri.parse('https://api.unsplash.com/photos/random?'
               'query=job&'
               'count=24&'
-              'client_id=oryn7IgHrGyob-72oKjB0RzXDMzthkqqNTP1qxGPi-w'));
+              'client_id=3XIx7AEOPQBZRTTeeH4IqlV1QUeHskPUM15BDAtD4bQ'));
       if(response.statusCode != 200){
         throw Exception('Закончилось количество запросов на фотографии'
           'сервиса unsplash.com для того чтобы восстановить необоходим'
