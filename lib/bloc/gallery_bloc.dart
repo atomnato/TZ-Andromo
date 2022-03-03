@@ -5,11 +5,14 @@ import 'package:flutter/foundation.dart';
 
 import 'bloc.dart';
 
+/// Class with business logic of gallery view.
 class GalleryBloc extends Bloc {
   final _imageController = StreamController<List<String>>();
+
   Stream<List<String>> get imageStream => _imageController.stream;
 
   final _galleryController = StreamController<ValidModel>();
+
   Stream<ValidModel> get galleryStream => _galleryController.stream;
 
   List<int> imageCount = [];
@@ -25,6 +28,7 @@ class GalleryBloc extends Bloc {
     }
   }
 
+  /// Get media from service use unsplash API.
   Future<void> _getImages() async {
     try {
       final response =
@@ -32,10 +36,10 @@ class GalleryBloc extends Bloc {
               'query=job&'
               'count=24&'
               'client_id=dIDaE4IqfKUv3_6_xsPFC3U5Nf8bcszf3-73hzjhNI4'));
-      if(response.statusCode != 200){
+      if (response.statusCode != 200) {
         throw Exception('Закончилось количество запросов на фотографии'
-          'сервиса unsplash.com для того чтобы восстановить необоходим'
-          'новый ключ. Подробнее на https://unsplash.com/developers');
+            'сервиса unsplash.com для того чтобы восстановить необоходим'
+            'новый ключ. Подробнее на https://unsplash.com/developers');
       }
       final List<dynamic> decodeResponse = jsonDecode(response.body);
       List<String> listImage =
@@ -56,6 +60,7 @@ class GalleryBloc extends Bloc {
   }
 }
 
+/// Model for track the progress of action.
 class ValidModel {
   final bool progress;
   final bool end;

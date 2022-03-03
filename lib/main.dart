@@ -17,12 +17,8 @@ class Application extends StatelessWidget {
       bloc: GalleryBloc(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        routes: {
-          '/' : (_) => const GalleryScreen()
-        },
+        routes: {'/': (_) => const GalleryScreen()},
       ),
     );
   }
 }
-
-
